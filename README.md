@@ -123,6 +123,14 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     logger.oscript.lib.v8runner=DEBUG, v8rdebug, console
 
+### Корневой журнал (логгер)
+
+В классе настроек logger возможно указать специализированное имя ``rootLogger``. Настройки корневого логгера влияют на все прочие журналы. Это удобно, если вы хотите просто включить отладку по всем журналам или все журналы направить в файл.
+
+Например:
+
+    logger.rootLogger=DEBUG
+
 ### Настройка способа вывода (класс appender)
 
     logger.oscript.lib.v8runner=DEBUG, v8rdebug, console
