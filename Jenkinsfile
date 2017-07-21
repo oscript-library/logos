@@ -10,8 +10,7 @@ pipeline {
             steps {
                 checkout scm
 
-                bat 'call opm install 1testrunner'
-                bat 'call 1testrunner -runall tests'
+                bat 'chcp 65001 > nul && call 1testrunner -runall tests'
             }
 
         }
@@ -23,7 +22,6 @@ pipeline {
             steps {
                 checkout scm
 
-                sh 'opm install 1testrunner'
                 sh '1testrunner -runall tests'
             }
 
@@ -37,7 +35,7 @@ pipeline {
                 checkout scm
 
                 bat 'erase /Q *.ospx'
-                bat 'call opm build .'
+                bat 'chcp 65001 > nul && call opm build .'
 
                 archiveArtifacts '*.ospx'
             }
