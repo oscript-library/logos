@@ -135,10 +135,24 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     set LOGOS_CONFIG=logger.rootLogger=DEBUG
 
+или
+
+    set LOGOS_LEVEL=DEBUG
+
 Установка и немедленный запуск команды-скрипта через командную строку без создания командного файла
 
+    (LOGOS_LEVEL=DEBUG) && (любая команда)
+
+или
+
     (set LOGOS_CONFIG=logger.rootLogger=DEBUG) && (любая команда)
-    
+
+Например:
+
+    (LOGOS_LEVEL=DEBUG) && (vanessa-runner help)
+
+или
+
     (set LOGOS_CONFIG=logger.rootLogger=DEBUG) && (vanessa-runner help)
 
 ### Настройка способа вывода (класс appender)
