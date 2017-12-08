@@ -131,6 +131,8 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     logger.rootLogger=DEBUG
 
+### Настройка через переменные среды
+
 Обычная установка через командную строку, например, используя отдельный командный файл
 
     set LOGOS_CONFIG=logger.rootLogger=DEBUG
@@ -174,6 +176,3 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     // формат указания свойства
     appender.имя_способа_вывода.свойство=значение
-
-
-
