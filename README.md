@@ -131,23 +131,42 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     logger.rootLogger=DEBUG
 
+### Настройка через переменные среды
+
 Обычная установка через командную строку, например, используя отдельный командный файл
 
     set LOGOS_CONFIG=logger.rootLogger=DEBUG
 
+
+или
+
+    set LOGOS_LEVEL=DEBUG
+
 Установка и немедленный запуск команды-скрипта через командную строку без создания командного файла
 
+    (LOGOS_LEVEL=DEBUG) && (любая команда)
+
+или
+
     (set LOGOS_CONFIG=logger.rootLogger=DEBUG) && (любая команда)
-    
+
+Например:
+
+    (LOGOS_LEVEL=DEBUG) && (vanessa-runner help)
+
+или
+
     (set LOGOS_CONFIG=logger.rootLogger=DEBUG) && (vanessa-runner help)
 
 ### Настройка способа вывода (класс appender)
 
     logger.oscript.lib.v8runner=DEBUG, v8rdebug, console
     appender.v8rdebug=ВыводЛогаВФайл
+    appender.v8rdebug.level=DEBUG
     appender.v8rdebug.file=/var/log/v8runner-debug.log
     
     appender.console=ВыводЛогаВКонсоль
+    appender.console.level=INFO
 
 В приведенном примере для лога oscript.lib.v8runner установлен уровень Отладка и заявлено 2 способа вывода. Они названы v8rdebug и console (названия произвольные).
 
@@ -156,10 +175,16 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
     // формат указания класса реализации
     appender.имя_способа_вывода=Класс
 
+Для каждого класса можно установить собственный уровень вывода сообщений. В этом случае перед выводом сообщения система логирования будет фильтровать сообщения.
+Для установки нужно заполнить свойство `level`. Возможные значения для свойства - `DEFAULT`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICALERROR`, `DISABLE`
+
+Например, в указанном выше примере для способа вывода `console` установлен уровень вывода сообщений информации и более серьезных. Отладочные сообщения в эту консоль не выводятся.
+А вот для способа вывода `v8rdebug` установлен уровень вывода сообщений `Отладка`. Т.е. этим способом вывода будут выводиться все сообщения!
+
+    appender.v8rdebug.level=DEBUG
+    appender.console.level=INFO
+
 Для каждого класса могут потребоваться какие-то свои параметры. Например, класс ВыводЛогаВФайл требует задания свойства file. Свойства способа вывода задаются через точку от имени способа вывода:
 
     // формат указания свойства
     appender.имя_способа_вывода.свойство=значение
-
-
-

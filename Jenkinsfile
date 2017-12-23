@@ -17,7 +17,7 @@ pipeline {
                 script {
 					if( fileExists ('tasks/test.os') ){
 						bat 'chcp 65001 > nul && oscript tasks/test.os'
-						junit junit 'junit-*.xml'
+						junit 'junit-*.xml'
 					}
 					else
 						echo 'no testing task'
