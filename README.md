@@ -137,7 +137,6 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     set LOGOS_CONFIG=logger.rootLogger=DEBUG
 
-
 или
 
     set LOGOS_LEVEL=DEBUG
