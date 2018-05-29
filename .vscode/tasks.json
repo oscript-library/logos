@@ -11,7 +11,7 @@
     "_runner": "terminal",
     "windows": {
         "command": "cmd",
-        "args": ["/c", "chcp 65001 ;"]
+        "args": ["/c", "chcp", "65001", ";"]
     },
     "linux": {
         "command": "sh",
@@ -19,7 +19,6 @@
     },
     "isShellCommand": true,
     // "showOutput": "silent",
-    "_runner": "terminal",
     "tasks": [
         {
             "taskName": "Testing project",
