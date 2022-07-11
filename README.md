@@ -263,7 +263,7 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
     set LOGOS_LEVEL=DEBUG
     
-## Я хочу выводить лог некоторокй библиотеки connector в файл http.log
+## Я хочу выводить лог некоторой библиотеки connector в файл http.log
 
 Дано: приложение SOME_APP, которое общается по сети с помощью библиотеки connector.
 Пусть: известно, что библиотека connector пишет в лог с именем `oscript.lib.connector`
@@ -272,15 +272,16 @@ set LOGOS_CONFIG=logger.oscript.lib.commands=DEBUG;logger.oscript.lib.cmdline=DE
 
 ```
 logger.oscript.lib.connector=INFO, foo
+appender.foo=ВыводЛогаВФайл
 appender.foo.file=/var/log/http.log
 ```
 
-Обратите внимание, в первой строке объявлено, что логгер oscript.lib.connector связан с аппендером foo (название придумали сами, прямо тут). Далее, во второй строке указывается, что аппендер foo (который мы придумали) пишет в файл /var/log/http.log
+Обратите внимание, в первой строке объявлено, что логгер oscript.lib.connector связан с аппендером foo (название придумали сами, прямо тут). Далее, во второй строке указывается, что аппендер foo (который мы придумали) является классом `ВыводЛогаВФайл` и пишет в файл /var/log/http.log
 
 ### С помощью переменной окружения LOGOS_CONFIG
 
 При использовании переменной окружения мы должны просто повторить строки файла конфигурации, разделив их точкой-с-запятой.
 
-    set LOGOS_CONFIG=logger.oscript.lib.connector=INFO, foo;appender.foo.file=/var/log/http.log
+    set LOGOS_CONFIG=logger.oscript.lib.connector=INFO, foo;appender.foo=ВыводЛогаВФайл;appender.foo.file=/var/log/http.log
     
 Таким образом, если у нас есть приложение, настройки логирования которого надо переопределить, мы должны создать рядом со стартовым скриптом приложения файл logos.cfg, либо (если не знаем где лежит этот файл или нет к нему доступа) создать переменную окружения LOGOS_CONFIG, написав в ней строки конфигурирования, разделив их точкой-с-запятой.
