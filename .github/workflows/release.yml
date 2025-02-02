@@ -8,7 +8,7 @@ on:
 
 jobs:
   release:
-    uses: autumn-library/workflows/.github/workflows/release.yml@v1
+    uses: autumn-library/workflows/.github/workflows/release.yml@main
     with:
       package_mask: "logos-*.ospx"
     secrets:
